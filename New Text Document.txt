@@ -1,0 +1,148 @@
+"#######################################################
+"           VIMRC   
+"#######################################################
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+let mapleader=","
+
+"================ Vundle Package Manager ==============
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" multiple cursors (ctrl-n & ctrl+direction)
+Plugin 'mg979/vim-visual-multi'
+
+" status line
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'voldikss/vim-floaterm'
+
+"Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'morhetz/gruvbox'
+
+call vundle#end()
+
+filetype plugin indent on
+
+" vim airline
+"let g:airline_theme='gruvbox'
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#enabled = 1
+
+" vim-floaterm
+let g:floaterm_keymap_new    = '<F7>'
+let g:floaterm_keymap_prev   = '<F8>'
+let g:floaterm_keymap_next   = '<F9>'
+let g:floaterm_keymap_hide   = '<F10>'
+let g:floaterm_keymap_toggle = '<F12>'
+"let g:floaterm_width = 0.3
+"let g:floaterm_position = 'right'
+
+"   Plugin 'nathanaelkane/vim-indent-guides'
+"let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_start_level = 1
+"let g:indent_guides_guide_size = 1
+
+"let g:indent_guides_auto_colors =0
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=DarkGrey ctermbg=5
+"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=DarkGrey ctermbg=8
+
+if &term =~ '256color'
+        " Disable Background Color Erase (BCE) so that color schemes
+        " work properly when Vim is used inside tmux and GNU screen.
+    set t_ut=
+endif
+        "
+" ================ Turn Off Swap Files =============
+set noswapfile
+set nobackup
+set nowb
+
+" ================ Persistent Undo ==================
+" Keep undo history across sessions, by storing in file.
+" " Only works all the time.
+
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
+endif
+
+" ================ Indentation ======================
+set autoindent
+set smartindent
+set smarttab
+set 
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
+set number
+
+" ================= Appearance ===================
+colorscheme gruvbox
+set background=dark
+" Make it obvious where 80 characters is
+set wrap "Wrap lines
+" Indents word-wrapped lines as much as the 'parent' line
+set breakindent
+" Ensures word-wrap does not split words
+set formatoptions=l
+
+"cmdline height
+"set cmdheight=2
+
+" Linebreak on 500 characters
+set lbr
+set textwidth=80
+set number
+set numberwidth=5
+
+
+" ================= OTHER THINGS ==================
+
+set mouse=a
+
+
+" Make the keyboard faaaaaaast
+set ttyfast
+set timeout timeoutlen=1000 ttimeoutlen=50
+
+" ================= OTHER THINGS ==================
+if !has('nvim')
+    set ttymouse=xterm2
+endif
+
+
+" trim white space
+"nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+"
+
+" NR-16   NR-8    COLOR NAME
+" 0       0       Black
+" 1       4       DarkBlue
+" 2       2       DarkGreen
+" 3       6       DarkCyan
+" 4       1       DarkRed
+" 5       5       DarkMagenta
+" 6       3       Brown, DarkYellow
+" 7       7       LightGray, LightGrey, Gray, Grey
+" 8       0*      DarkGray, DarkGrey
+" 9       4*      Blue, LightBlue
+" 10      2*      Green, LightGreen
+" 11      6*      Cyan, LightCyan
+" 12      1*      Red, LightRed
+" 13      5*      Magenta, LightMagenta
+" 14      3*      Yellow, LightYellow
+" 15      7*        White
+
