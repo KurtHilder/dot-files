@@ -1,0 +1,157 @@
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  0) VUNDLE PACKAGE MANAGER
+"
+"  to install vundle - copy and paste the following in bash
+"  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Color theme
+Plugin 'sainnhe/gruvbox-material'
+
+"nerdTree (file expolorer)
+Plugin 'preservim/nerdtree'
+
+" terminal in vim
+Plugin 'voldikss/vim-floaterm'
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       
+" :PluginInstall   
+" :PluginSearch foo 
+" :PluginClean     
+"
+"--------------------------------------------------------------
+" PLUGIN DETAILS
+"--------------------------------------------------------------
+
+" nerdTree things
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+     \ quit | endif
+
+" floatTerm settings
+let g:floaterm_wintype = 'vsplit'
+let g:floaterm_width = 0.2
+let g:floaterm_height= 0.25
+let g:floaterm_position = 'right'
+
+let g:floaterm_keymap_new    = '<F9>'
+let g:floaterm_keymap_kill   = '<F10>'
+
+" autocmd VimEnter * FloatermNew 
+autocmd BufWinLeave * FloatermKill!
+
+
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"  1) USER INTERFACE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Always show current position
+set ruler
+"
+"Height of the command bar
+set cmdheight=1
+
+" Highlight search results
+set hlsearch
+
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" expand tabs into spaces
+set expandtab
+
+" when using the >> or << commands, shift lines by 4 spaces
+set shiftwidth=4
+
+" show a visual line under the cursor's current line
+set cursorline
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+"
+" " Add a bit extra margin to the left
+set foldcolumn=2
+
+" Number and Relative number
+set number
+set relativenumber
+
+imap jk <Esc>
+
+set mouse=a
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Enable syntax highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable 
+
+" Enable 256 colors palette in Gnome Terminal
+ if $COLORTERM == 'gnome-terminal'
+     set t_Co=256
+     endif
+     try
+        colorscheme gruvbox-material
+  catch
+endtry
+
+
+set background=dark
+highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+set encoding=utf8
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" " Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters 
+set lbr 
+set tw=160
+
+set ai "Auto indent 
+set si "Smart indent 
+set wrap "Wrap lines 
+
+
+" enable all Python syntax highlighting features
+let python_highlight_all = 1
