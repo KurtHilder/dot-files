@@ -1,0 +1,96 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"	SIMPLE VIMRC WITH A TOOLBAR
+"   NO PLUGINS
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"  1) USER INTERFACE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Always show current position
+set ruler
+"
+"Height of the command bar
+set cmdheight=1
+
+" Highlight search results
+set hlsearch
+
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+
+" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
+
+" Add a bit extra margin to the left
+set foldcolumn=2
+
+" Number and Relative number
+set number
+set relativenumber
+
+" exits insert mode with jk
+imap jk <Esc>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Enable syntax highlighting
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable 
+
+" Enable 256 colors palette in Gnome Terminal
+if $COLORTERM == 'gnome-terminal'
+    set t_Co=256
+endif
+try
+	colorscheme desert
+catch
+endtry
+
+set background=dark
+"highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+set encoding=utf8
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters 
+set lbr 
+set tw=160
+
+set ai "Auto indent 
+set si "Smart indent 
+set wrap "Wrap lines 
+"""""""""""""""""""""""""""""" 
+" => Status line 
+""""""""""""""""""""""""""""""" 
+" " Always show the status line
+set laststatus=2
+"
+" Format the status line
+set statusline=
+set statusline+=%=
+set statusline+=\ %f
+set statusline+=%m\
+set statusline+=\ %y
+set statusline+=\ %l:%c
+set statusline+=\ %p%%
+set statusline+=\ 
