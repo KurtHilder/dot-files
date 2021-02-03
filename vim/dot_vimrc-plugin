@@ -15,15 +15,21 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+"Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " Color theme
-Plugin 'sainnhe/gruvbox-material'
-
+"Plugin 'sainnhe/gruvbox-material'
+Plugin 'morhetz/gruvbox'
 "nerdTree (file expolorer)
 Plugin 'preservim/nerdtree'
-
 " terminal in vim
 Plugin 'voldikss/vim-floaterm'
+" multicursor
+Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -46,7 +52,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-autocmd VimEnter * NERDTree | wincmd p
+"autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
      \ quit | endif
@@ -63,6 +69,9 @@ let g:floaterm_keymap_kill   = '<F10>'
 " autocmd VimEnter * FloatermNew 
 autocmd BufWinLeave * FloatermKill!
 
+"air line settings
+let g:airline#extensions#tabline#enabled = 1
+
 
 
 
@@ -75,13 +84,14 @@ autocmd BufWinLeave * FloatermKill!
 set ruler
 "
 "Height of the command bar
-set cmdheight=1
+set cmdheight=2
 
 " Highlight search results
 set hlsearch
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -117,14 +127,15 @@ set mouse=a
 syntax enable 
 
 " Enable 256 colors palette in Gnome Terminal
- if $COLORTERM == 'gnome-terminal'
-     set t_Co=256
-     endif
-     try
-        colorscheme gruvbox-material
-  catch
-endtry
+" if $COLORTERM == 'gnome-terminal'
+"     set t_Co=256
+" endif
+" try
+"       colorscheme gruvbox
+" catch
+" endtry
 
+colorscheme gruvbox
 
 set background=dark
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
